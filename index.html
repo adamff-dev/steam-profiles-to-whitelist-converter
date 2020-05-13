@@ -1,9 +1,9 @@
-<!-- Creado por adam24_exe -->
+<!-- Creado por 125K -->
 
 <html>
 	<head>
 	<title>URLs to HEX</title>
-	<meta name=viewport content="width=device-width,initial-scale=1">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
 	<style>
 		body {
 			font-family: Arial, Helvetica, sans-serif;
@@ -16,9 +16,13 @@
 			background-color: #f2f2f2;
 			padding: 20px;
 			margin: 0px 0px 22px 0px;
+			display:inline-block;
+		}
+		.top {
+			display: flex;
+			align-items: center;
 		}
 		.button {
-			background-color: #4CAF50; /* Green */
 			border: none;
 			color: white;
 			padding: 16px 32px;
@@ -33,10 +37,10 @@
 		.button2 {
 			background-color: white; 
 			color: black; 
-			border: 2px solid #008CBA;
+			border: 2px solid #28286f;
 		}
 		.button2:hover {
-			background-color: #008CBA;
+			background-color: #28286f;
 			color: white;
 		}
 	</style>
@@ -54,13 +58,13 @@
 			}
 		</script>
 		<center>
-			<h1>Conversor de URL steam a HEX</h1>
-			<h4>Por lotes</h4>
 			<div>
-				<textarea autofocus rows="30" cols="60" id="in"></textarea>
-				<textarea disabled rows="30" id="out"></textarea>
+				<h1>Conversor de URLs steam a HEX</h1>
+				<h4>Por lotes</h4>
+				<textarea autofocus rows="30" cols="60" placeholder="Introduce aquí las URLs (una por línea)..." id="in"></textarea>
+				<textarea disabled rows="30" id="out"></textarea></br>
+				<button class="button button2" onclick="calcular()">Convertir</button> 
 			</div>
-			<button class="button button2" onclick="calcular()">Convertir</button> 
 		</center>
 	</body>
 </html>
