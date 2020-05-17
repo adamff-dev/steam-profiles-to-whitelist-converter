@@ -76,11 +76,13 @@
 				document.getElementById("out").value += "INSERT INTO whitelist(identifier)\nVALUES\n"
 				var textArea = document.getElementById("in");
 				var arrayOfLines = textArea.value.split("\n");
-				numberOfLines = textArea.value.split("profiles/"); 
+				var numberOfProfiles = textArea.value.split("profiles"); 
+				let count = 0;
 				for(var i = 0;i < arrayOfLines.length;i++){
 					if (arrayOfLines[i].includes("profiles/")) {
+						count++;
 						var string = parseInt(arrayOfLines[i].split("profiles/")[1]).toString(16).toUpperCase();
-						if (i == numberOfLines.length - 1) {
+						if (count == numberOfProfiles.length - 1) {
 							var lastCharacter = ";";
 						} else {
 							var lastCharacter = ",";
