@@ -53,7 +53,7 @@
 				var arrayOfLines = textArea.value.split("\n");
 				for(var i = 0;i < arrayOfLines.length;i++){
 					var string = parseInt(arrayOfLines[i].split("profiles/")[1]).toString(16).toUpperCase();
-					document.getElementById("out").value += string + "\n";
+					document.getElementById("out").value += "steam:" + string + "\n";
 				}
 			}
 		</script>
@@ -62,7 +62,7 @@
 				<h1>Conversor de URLs Steam a HEX</h1>
 				<h4>Por lotes</h4>
 				<textarea autofocus rows="30" cols="60" placeholder="Introduce aquí las URLs (una por línea)..." id="in"></textarea>
-				<textarea disabled rows="30" id="out"></textarea></br>
+				<textarea disabled rows="30" cols="30" id="out"></textarea></br>
 				<button class="button button2" onclick="calcular()">Convertir</button> 
 			</div>
 		</center>
