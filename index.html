@@ -5,6 +5,11 @@
 	<title>URLs to HEX</title>
 	<meta name="viewport" content="width=device-width,initial-scale=1">
 	<style>
+		p {
+			display: inline-block;
+			vertical-align: middle;
+			margin: 10px 2px 2px;
+		}
 		body {
 			font-family: Arial, Helvetica, sans-serif;
 		}
@@ -30,18 +35,36 @@
 			text-decoration: none;
 			display: inline-block;
 			font-size: 16px;
-			margin: 2px 2px;
+			margin: 10px 2px 2px;
 			transition-duration: 0.4s;
 			cursor: pointer;
 			float: right;
 		}
+		.button1 {
+			background-color: white; 
+			color: black; 
+			border: 2px solid #1a237e;
+		}
 		.button2 {
 			background-color: white; 
 			color: black; 
-			border: 2px solid #28286f;
+			border: 2px solid #5c6bc0;
+		}
+		.button3 {
+			background-color: white; 
+			color: black; 
+			border: 2px solid #9fa8da;
+		}
+		.button1:hover {
+			background-color: #1a237e;
+			color: white;
 		}
 		.button2:hover {
-			background-color: #28286f;
+			background-color: #5c6bc0;
+			color: white;
+		}
+		.button3:hover {
+			background-color: #9fa8da;
 			color: white;
 		}
 	</style>
@@ -59,28 +82,47 @@
 					}
 				}
 			}
+			
 			function download(){
 				var text = document.getElementById("out").value;
 				text = text.replace(/\n/g, "\r\n"); // To retain the Line breaks.
 				var blob = new Blob([text], { type: "text/plain"});
 				var anchor = document.createElement("a");
-				anchor.download = "my-filename.txt";
+				anchor.download = "hex" + getFormattedTime() + ".txt";
 				anchor.href = window.URL.createObjectURL(blob);
 				anchor.target ="_blank";
 				anchor.style.display = "none"; // just to be safe!
 				document.body.appendChild(anchor);
 				anchor.click();
 				document.body.removeChild(anchor);
-			 }
+			}
+			
+			function clipboard() {
+				var copyText = document.getElementById("out");
+				copyText.select();
+				document.execCommand("copy");
+				alert("Copied the text: " + copyText.value);
+			}
+			
+			function getFormattedTime() {
+				var today = new Date();
+				var y = today.getFullYear();
+				var m = today.getMonth() + 1;
+				var d = today.getDate();
+				var h = today.getHours();
+				var mi = today.getMinutes();
+				var s = today.getSeconds();
+				return "_" + d + "-" + m + "-" + y + "_" + h + "." + mi + "." + s;
+			}
 		</script>
 		<center>
 			<div>
 				<h1>Conversor de URLs Steam a HEX</h1>
-				<h4>Por lotes</h4>
 				<textarea autofocus rows="30" cols="60" placeholder="Introduce aquí las URLs (una por línea)..." id="in"></textarea>
 				<textarea disabled rows="30" cols="30" id="out"></textarea></br>
-				<button class="button button2" onclick="calcular()">Convertir</button> 
-				<button class="button button2" onclick="download()">Descargar</button> 
+				<button class="button button1" onclick="calcular()">Convertir</button>
+				<button class="button button2" onclick="download()">Descargar</button>
+				<button class="button button3" onclick="clipboard()">Copiar</button> 
 			</div>
 		</center>
 	</body>
