@@ -107,7 +107,7 @@
 				var copyText = document.getElementById("out");
 				copyText.select();
 				document.execCommand("copy");
-				alert("Output copiado correctamente");
+				alert("Output copiado correctamente" + copyText.value);
 			}
 			
 			function getFormattedTime() {
@@ -125,7 +125,7 @@
 			<div>
 				<h1>Conversor de URLs Steam a HEX</h1>
 				<textarea autofocus rows="30" cols="60" placeholder="Introduce aquí las URLs (una por línea)..." id="in"></textarea>
-				<textarea disabled rows="30" cols="40" id="out"></textarea></br>
+				<textarea readonly rows="30" cols="40" id="out"></textarea></br>
 				<button class="button button1" onclick="calcular()">Convertir</button>
 				<button class="button button2" onclick="download()">Descargar</button>
 				<button class="button button3" onclick="clipboard()">Copiar</button> 
