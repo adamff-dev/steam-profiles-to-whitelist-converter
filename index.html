@@ -25,14 +25,15 @@
 		.button {
 			border: none;
 			color: white;
-			padding: 16px 32px;
+			padding: 10px 16px;
 			text-align: center;
 			text-decoration: none;
 			display: inline-block;
 			font-size: 16px;
-			margin: 4px 2px;
+			margin: 2px 2px;
 			transition-duration: 0.4s;
 			cursor: pointer;
+			float: right;
 		}
 		.button2 {
 			background-color: white; 
@@ -52,10 +53,25 @@
 				var textArea = document.getElementById("in");
 				var arrayOfLines = textArea.value.split("\n");
 				for(var i = 0;i < arrayOfLines.length;i++){
-					var string = parseInt(arrayOfLines[i].split("profiles/")[1]).toString(16).toUpperCase();
-					document.getElementById("out").value += "steam:" + string + "\n";
+					if (arrayOfLines[i].includes("profiles/")) {
+						var string = parseInt(arrayOfLines[i].split("profiles/")[1]).toString(16).toUpperCase();
+						document.getElementById("out").value += "steam:" + string + "\n";
+					}
 				}
 			}
+			function download(){
+				var text = document.getElementById("out").value;
+				text = text.replace(/\n/g, "\r\n"); // To retain the Line breaks.
+				var blob = new Blob([text], { type: "text/plain"});
+				var anchor = document.createElement("a");
+				anchor.download = "my-filename.txt";
+				anchor.href = window.URL.createObjectURL(blob);
+				anchor.target ="_blank";
+				anchor.style.display = "none"; // just to be safe!
+				document.body.appendChild(anchor);
+				anchor.click();
+				document.body.removeChild(anchor);
+			 }
 		</script>
 		<center>
 			<div>
@@ -64,6 +80,7 @@
 				<textarea autofocus rows="30" cols="60" placeholder="Introduce aquí las URLs (una por línea)..." id="in"></textarea>
 				<textarea disabled rows="30" cols="30" id="out"></textarea></br>
 				<button class="button button2" onclick="calcular()">Convertir</button> 
+				<button class="button button2" onclick="download()">Descargar</button> 
 			</div>
 		</center>
 	</body>
