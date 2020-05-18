@@ -54,6 +54,7 @@
 			background-color: white; 
 			color: black; 
 			border: 2px solid #9fa8da;
+			width: 100px;
 		}
 		.button1:hover {
 			background-color: #1a237e;
@@ -81,13 +82,13 @@
 				for(var i = 0;i < arrayOfLines.length;i++){
 					if (arrayOfLines[i].includes("profiles/")) {
 						count++;
-						var string = parseInt(arrayOfLines[i].split("profiles/")[1]).toString(16).toUpperCase();
+						var string = parseInt(arrayOfLines[i].split("profiles/")[1].split("/")[0].split(" ")[0]).toString(16).toUpperCase();
 						if (count == numberOfProfiles.length - 1) {
 							var lastCharacter = ";";
 						} else {
-							var lastCharacter = ",";
+							var lastCharacter = ",\n";
 						}
-						document.getElementById("out").value += "	(\"steam:" + string + "\")" + lastCharacter + "\n";
+						document.getElementById("out").value += "	(\"steam:" + string + "\")" + lastCharacter;
 					}
 				}
 			}
@@ -128,9 +129,9 @@
 				<h1>Conversor de URLs Steam a HEX</h1>
 				<textarea autofocus rows="30" cols="60" placeholder="Introduce aquí las URLs (una por línea)..." id="in"></textarea>
 				<textarea readonly rows="30" cols="40" id="out"></textarea></br>
-				<button class="button button1" onclick="calcular()">Convertir</button>
-				<button class="button button2" onclick="download()">Descargar</button>
-				<button class="button button3" onclick="clipboard()">Copiar</button> 
+				<button id="calcular" class="button button1" onclick="calcular()">Convertir</button>
+				<button id="download" class="button button2" onclick="download()">Descargar</button>
+				<button id="clipboard" class="button button3" onclick="clipboard()">Copiar</button> 
 			</div>
 		</center>
 	</body>
