@@ -74,7 +74,7 @@
 		<script>
 			function calcular() {
 				document.getElementById("out").value = ""
-				document.getElementById("out").value += "INSERT INTO whitelist(identifier)\nVALUES\n"
+				document.getElementById("out").value += "INSERT INTO whitelist(identifier, listed)\nVALUES\n"
 				var textArea = document.getElementById("in");
 				var arrayOfLines = textArea.value.split("\n");
 				var numberOfProfiles = textArea.value.split("profiles"); 
@@ -88,7 +88,7 @@
 						} else {
 							var lastCharacter = ",\n";
 						}
-						document.getElementById("out").value += "	(\"steam:" + string + "\")" + lastCharacter;
+						document.getElementById("out").value += "	(\'steam:" + string + "\', \'1\')" + lastCharacter;
 					}
 				}
 			}
