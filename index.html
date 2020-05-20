@@ -74,7 +74,7 @@
 		<script>
 			function calcular() {
 				document.getElementById("out").value = ""
-				document.getElementById("out").value += "INSERT INTO whitelist(identifier, listed)\nVALUES\n"
+				document.getElementById("out").value += "INSERT INTO whitelist(identifier)\nVALUES\n"
 				var textArea = document.getElementById("in");
 				var arrayOfLines = textArea.value.split("\n");
 				var numberOfProfiles = textArea.value.split("profiles"); 
@@ -82,13 +82,13 @@
 				for(var i = 0;i < arrayOfLines.length;i++){
 					if (arrayOfLines[i].includes("profiles/")) {
 						count++;
-						var string = parseInt(arrayOfLines[i].split("profiles/")[1].split("/")[0].split(" ")[0]).toString(16);
+						var string = BigInt(arrayOfLines[i].split("profiles/")[1].split("/")[0].split(" ")[0]).toString(16).toUpperCase();
 						if (count == numberOfProfiles.length - 1) {
 							var lastCharacter = ";";
 						} else {
 							var lastCharacter = ",\n";
 						}
-						document.getElementById("out").value += "	(\'steam:" + string + "\', \'1\')" + lastCharacter;
+						document.getElementById("out").value += "	(\"steam:" + string + "\")" + lastCharacter;
 					}
 				}
 			}
@@ -128,10 +128,13 @@
 			<div>
 				<h1>Conversor de URLs Steam a HEX</h1>
 				<textarea autofocus rows="30" cols="60" placeholder="Introduce aquí las URLs (una por línea)..." id="in"></textarea>
-				<textarea readonly rows="30" cols="40" id="out"></textarea></br>
-				<button id="calcular" class="button button1" onclick="calcular()">Convertir</button>
-				<button id="download" class="button button2" onclick="download()">Descargar</button>
-				<button id="clipboard" class="button button3" onclick="clipboard()">Copiar</button> 
+				<form onsubmit='#' style='display:inline;' action="post.php" method="post">
+					<textarea readonly rows="30" cols="40" name="out" id="out"></textarea></br>
+					<input style='float:left;' id="sql" class="button button1" type="submit" value="Subir a SQL"/>
+				</form>
+					<button id="calcular" class="button button1" onclick="calcular()">Convertir</button>
+					<button id="download" class="button button2" onclick="download()">Descargar</button>
+					<button id="clipboard" class="button button3" onclick="clipboard()">Copiar</button>
 			</div>
 		</center>
 	</body>
