@@ -82,7 +82,7 @@
 				for(var i = 0;i < arrayOfLines.length;i++){
 					if (arrayOfLines[i].includes("profiles/")) {
 						count++;
-						var string = parseInt(arrayOfLines[i].split("profiles/")[1].split("/")[0].split(" ")[0]).toString(16).toUpperCase();
+						var string = parseInt(arrayOfLines[i].split("profiles/")[1].split("/")[0].split(" ")[0]).toString(16);
 						if (count == numberOfProfiles.length - 1) {
 							var lastCharacter = ";";
 						} else {
