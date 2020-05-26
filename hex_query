@@ -1,0 +1,138 @@
+<!-- Creado por 125K -->
+
+<html>
+	<head>
+	<title>HEX to query</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<style>
+		p {
+			display: inline-block;
+			vertical-align: middle;
+			margin: 10px 2px 2px;
+		}
+		body {
+			font-family: Arial, Helvetica, sans-serif;
+		}
+		textarea {
+			resize: none;
+		}
+		div {
+			border-radius: 10px;
+			background-color: #f2f2f2;
+			padding: 20px;
+			margin: 0px 0px 22px 0px;
+			display:inline-block;
+		}
+		.top {
+			display: flex;
+			align-items: center;
+		}
+		.button {
+			border: none;
+			color: white;
+			padding: 10px 16px;
+			text-align: center;
+			text-decoration: none;
+			display: inline-block;
+			font-size: 16px;
+			margin: 10px 2px 2px;
+			transition-duration: 0.4s;
+			cursor: pointer;
+			float: right;
+		}
+		.button1 {
+			background-color: white; 
+			color: black; 
+			border: 2px solid #1a237e;
+		}
+		.button2 {
+			background-color: white; 
+			color: black; 
+			border: 2px solid #5c6bc0;
+		}
+		.button3 {
+			background-color: white; 
+			color: black; 
+			border: 2px solid #9fa8da;
+			width: 100px;
+		}
+		.button1:hover {
+			background-color: #1a237e;
+			color: white;
+		}
+		.button2:hover {
+			background-color: #5c6bc0;
+			color: white;
+		}
+		.button3:hover {
+			background-color: #9fa8da;
+			color: white;
+		}
+	</style>
+	</head>
+	<body>
+		<script>
+			function calcular() {
+				document.getElementById("out").value = ""
+				document.getElementById("out").value += "INSERT INTO whitelist(identifier)\nVALUES\n"
+				var textArea = document.getElementById("in");
+				var arrayOfLines = textArea.value.split("\n");
+				var numberOfProfiles = textArea.value.split("1100001"); 
+				let count = 0;
+				for(var i = 0;i < arrayOfLines.length;i++){
+					if (arrayOfLines[i].includes("1100001")) {
+						count++;
+						var string = arrayOfLines[i].split("1100001")[1].split(" ")[0].split("-")[0];
+						if (count == numberOfProfiles.length - 1) {
+							var lastCharacter = ";";
+						} else {
+							var lastCharacter = ",\n";
+						}
+						document.getElementById("out").value += "	(\"steam:" + "1100001" + string + "\")" + lastCharacter;
+					}
+				}
+			}
+			
+			function download(){
+				var text = document.getElementById("out").value;
+				text = text.replace(/\n/g, "\r\n"); // To retain the Line breaks.
+				var blob = new Blob([text], { type: "text/plain"});
+				var anchor = document.createElement("a");
+				anchor.download = "hex" + getFormattedTime() + ".txt";
+				anchor.href = window.URL.createObjectURL(blob);
+				anchor.target ="_blank";
+				anchor.style.display = "none"; // just to be safe!
+				document.body.appendChild(anchor);
+				anchor.click();
+				document.body.removeChild(anchor);
+			}
+			
+			function clipboard() {
+				var copyText = document.getElementById("out");
+				copyText.select();
+				document.execCommand("copy");
+			}
+			
+			function getFormattedTime() {
+				var today = new Date();
+				var y = today.getFullYear();
+				var m = today.getMonth() + 1;
+				var d = today.getDate();
+				var h = today.getHours();
+				var mi = today.getMinutes();
+				var s = today.getSeconds();
+				return "_" + d + "-" + m + "-" + y + "_" + h + "." + mi + "." + s;
+			}
+		</script>
+		<center>
+			<div>
+				<h1>Steam HEX a Query</h1>
+				<textarea autofocus rows="30" cols="60" placeholder="Introduce aquí las URLs (una por línea)..." id="in"></textarea>
+				<textarea readonly rows="30" cols="40" id="out"></textarea></br>
+				<button id="calcular" class="button button1" onclick="calcular()">Convertir</button>
+				<button id="download" class="button button2" onclick="download()">Descargar</button>
+				<button id="clipboard" class="button button3" onclick="clipboard()">Copiar</button> 
+			</div>
+		</center>
+	</body>
+</html>
