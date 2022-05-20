@@ -2,7 +2,7 @@
 
 <html>
 	<head>
-	<title>URLs to HEX</title>
+	<title>Steam to HEX</title>
 	<meta name="viewport" content="width=device-width,initial-scale=1">
 	<style>
 		p {
@@ -98,7 +98,7 @@
 				text = text.replace(/\n/g, "\r\n"); // To retain the Line breaks.
 				var blob = new Blob([text], { type: "text/plain"});
 				var anchor = document.createElement("a");
-				anchor.download = "hex" + getFormattedTime() + ".txt";
+				anchor.download = "hex" + getFormattedTime() + ".sql";
 				anchor.href = window.URL.createObjectURL(blob);
 				anchor.target ="_blank";
 				anchor.style.display = "none"; // just to be safe!
@@ -126,11 +126,10 @@
 		</script>
 		<center>
 			<div>
-				<h1>Conversor de URLs Steam a HEX</h1>
+				<h1>Steam profiles to HEX</h1>
 				<textarea autofocus rows="30" cols="60" placeholder="Introduce aquí las URLs (una por línea)..." id="in"></textarea>
 				<form onsubmit='#' style='display:inline;' action="post.php" method="post">
 					<textarea readonly rows="30" cols="40" name="out" id="out"></textarea></br>
-					<input style='float:left;' id="sql" class="button button1" type="submit" value="Subir a SQL"/>
 				</form>
 					<button id="calcular" class="button button1" onclick="calcular()">Convertir</button>
 					<button id="download" class="button button2" onclick="download()">Descargar</button>
