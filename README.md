@@ -1,12 +1,23 @@
-# Steam profiles to HEX
-Conversor de URLs de perfiles de Steam a hexadecimal. Como output genera un script SQL para facilitar la subida masiva de perfiles a la whitelist de un servidor de <a href="https://fivem.net/">FiveM</a>.
+# Conversor de perfiles de Steam a HEX
 
-Puede usar esta herramienta descargando el archivo <a href="https://github.com/adamff24/steam-profiles-converter/blob/master/index.html">index.html</a> y ejecutándolo en su navegador o utilizar la siguiente página: <a href="https://adamff24.github.io/steam-profiles-converter/">https://adamff24.github.io/steam-profiles-converter/</a>
+Este es un conversor de URLs de perfiles de Steam a hexadecimal. Su principal utilidad es generar un script SQL para facilitar la subida masiva de perfiles a la whitelist de un servidor de [FiveM](https://fivem.net/).
+
+## Uso
+
+Puede utilizar esta herramienta de dos maneras:
+
+1. Descargue el archivo [index.html](https://github.com/adamff24/steam-profiles-converter/blob/master/index.html) y ejecútelo en su navegador.
+2. Utilice la página web alojada en: [https://adamff-dev.github.io/steam-profiles-converter/](https://adamff-dev.github.io/steam-profiles-converter/).
 
 El funcionamiento es muy sencillo:
 
-1. Escriba las URLs de los perfiles en el àrea de texto izquierdo (una por línea)
-2. Haga click en el botón "Convertir". Se generará el script SQL.
-3. Ahora puede copiarlo o, si lo prefiere, descargarlo mediante los botones de la parte inferior
+1. Escriba las URLs de los perfiles en el área de texto izquierdo, una por línea.
+2. Haga clic en el botón "Convertir". Se generará el script SQL.
+3. Copie el script generado o descárguelo utilizando los botones de la parte inferior de la página.
 
-<img width="60%" src="https://i.imgur.com/51qKXHY.png">
+![Captura de pantalla del conversor](https://i.imgur.com/51qKXHY.png)
+
+## Notas
+
+- Este conversor está diseñado para facilitar la gestión de la whitelist de servidores de FiveM.
+- Asegúrese de tener los permisos necesarios para ejecutar scripts SQL en el servidor correspondiente.
