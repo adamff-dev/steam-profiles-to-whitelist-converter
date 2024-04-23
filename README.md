@@ -7,7 +7,7 @@ Este es un conversor de URLs de perfiles de Steam a hexadecimal. Su principal ut
 Puede utilizar esta herramienta de dos maneras:
 
 1. Descargue el archivo [index.html](https://github.com/adamff24/steam-profiles-converter/blob/master/index.html) y ejecútelo en su navegador.
-2. Utilice la página web alojada en: [https://adamff-dev.github.io/steam-profiles-converter/](https://adamff-dev.github.io/steam-profiles-converter/).
+2. Utilice la página web alojada en: https://adamff-dev.github.io/steam-profiles-to-whitelist-converter/.
 
 El funcionamiento es muy sencillo:
 
